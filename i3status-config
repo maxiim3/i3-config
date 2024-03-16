@@ -1,0 +1,61 @@
+general {
+        colors = true
+        color_good = "#a3be8c"
+        color_degraded = "#ebcb8b"
+        color_bad = "#bf616a"
+        interval = 1
+        separator = " | "
+    }
+    
+order += "memory"
+order += "cpu_usage"
+order += "ethernet enp0s31f6"
+order += "wireless __first__"
+order += "disk /"
+# order += "battery 0"
+# order += "battery 1"
+order += "battery all"
+
+disk "/" {
+        format = "/: %percentage_used"
+    }
+    
+cpu_usage {
+        format = "CPU_0: %cpu0 CPU_1: %cpu1 CPU_2: %cpu2 CPU_3: %cpu3"
+        degraded_threshold = 90
+        max_threshold = 95
+}
+
+ethernet enp0s31f6 {
+  format_up = "ETH: %ip (%speed)"
+  format_down = "ETH: down"
+}
+
+wireless __first__ {
+  format_up = "WLS: (%quality at %ssid) %ip"
+  format_down  = "WLS: down"
+}
+battery 0 {
+  format = "BAT0: %percentage"
+  last_full_capacity = true
+  threshold_type=percentage
+  low_threshold=10
+}
+battery 1 {
+  path=/sys/class/power_supply/%d/uevent
+  format = "BAT1: %percentage"
+  last_full_capacity = true
+  threshold_type=percentage
+  low_threshold=10
+}
+battery all {
+  path=/sys/class/power_supply/%d/uevent
+  format = "BAT AGGR: %percentage"
+  last_full_capacity = true
+  threshold_type=percentage
+  low_threshold=10
+}
+memory {
+  memory_used_method = classical
+  format="Memory: %used/%total"
+}
