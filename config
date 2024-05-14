@@ -107,15 +107,15 @@ bindsym $mod+Shift+a focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: Code"
+set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
-set $ws7 "7: Toggletrack"
+set $ws7 "7"
 set $ws8 "8: Notes"
-set $ws9 "9: Airddm"
+set $ws9 "9: Chat"
 set $ws10 "10: Files"
 
 # switch to workspace
@@ -147,11 +147,10 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # assign [class="google-chrome"] $ws1
 # assign [class="Gnome-terminal"] $ws1
 assign [class="code"] $ws1
-assign [class="Gnome-terminal"] $ws2
-
+# assign [class="Gnome-terminal"] $ws2
 assign [class="crx_olmghdipmcaeajdljblgokfclmdfcgml"] $ws4
 # Mattermost
-assign [class="mattermost"] $ws3 
+assign [class="mattermost"] $ws9 
 
 assign [class="Org.gnome.Nautilus"] $ws10
 
@@ -173,6 +172,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m '' -B 'Yes, exit i3' 'i3-msg exit'"
+# LOCK i3
+bindsym $mod+Escape exec "i3lock"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -182,10 +183,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -218,7 +219,7 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 
 
 # CUSTOM
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 3
 default_border pixel 1
 gaps inner 8
 gaps outer 8
@@ -228,9 +229,9 @@ smart_borders on
 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #0bb09d
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.unfocused        #333333 #222222 #888888 #292d2e   #22222255
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
