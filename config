@@ -151,7 +151,9 @@ assign [class="code"] $ws1
 assign [class="crx_olmghdipmcaeajdljblgokfclmdfcgml"] $ws4
 # Mattermost
 assign [class="mattermost"] $ws9 
-
+# Mail Client Thunderbird to space 9
+assign [class="Mail"] $ws9 
+#files to space 10
 assign [class="Org.gnome.Nautilus"] $ws10
 
 
@@ -160,7 +162,9 @@ exec --no-startup-id code
 exec --no-startup-id gnome-terminal
 exec --no-startup-id nautilus
 exec --no-startup-id Google-chrome
+exec --no-startup-id Thunderbird
 exec --no-startup-id Mattermost
+exec --no-startup-id Dunst
 exec_always --no-startup-id compton
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id Albert
@@ -170,6 +174,7 @@ exec_always --no-startup-id Albert
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m '' -B 'Yes, exit i3' 'i3-msg exit'"
 # LOCK i3
